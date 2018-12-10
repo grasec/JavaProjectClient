@@ -27,19 +27,19 @@ public class Main {
                 case "save":
                     serverThread.setNotes(noteArrayList);
                     serverThread.doAction(ServerThread.ACTION_SEND_NOTES);
+                    printNotes(noteArrayList);
                     break;
 
                 case "add":
                     System.out.println("Enter you note:");
                     String note = scanner.nextLine();
                     noteArrayList.add(new Note(note));
+                    printNotes(noteArrayList);
                     break;
                 case "remove":
                     System.out.println("Which note to remove?");
                     int index = scanner.nextInt();
-                    noteArrayList.remove(index);
-                    break;
-                case "print":
+                    noteArrayList.remove(index-1);
                     printNotes(noteArrayList);
                     break;
             }
