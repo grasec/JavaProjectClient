@@ -25,10 +25,13 @@ public class ServerThread {
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
             switch (action) {
-                case ACTION_GET_NOTES:
+                case ACTION_GET_NOTES: {
+                    outputStream.write(100);
                     mNotes = getNotesFromServer(inputStream);
                     break;
+                }
                 case ACTION_SEND_NOTES:
+                    outputStream.write(101);
                     sendNotesToServer(outputStream, mNotes);
                     break;
 
@@ -62,6 +65,7 @@ public class ServerThread {
     }
 
     private ArrayList<Note> getNotesFromServer(InputStream inputStream) {
+
         ArrayList<Note> notes = new ArrayList<>();
         try {
             byte[] arraySize = new byte[4];
@@ -101,4 +105,6 @@ public class ServerThread {
     void setNotes(ArrayList<Note> notes) {
         mNotes = notes;
     }
+
+
 }
