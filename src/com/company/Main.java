@@ -9,8 +9,6 @@ public class Main {
     public static void main(String[] args) {
         ServerThread serverThread = new ServerThread();
         Scanner scanner = new Scanner(System.in);
-        //serverThread.doAction(ServerThread.ACTION_SEND_NOTES);
-        //OTES = serverThread.getNotes();
 
         while (true) {
             System.out.println("choose an action : \n" +
